@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'mainapp',
     'ckeditor',
     'ckeditor_uploader',
+    'sass_processor',
 ]
 
 SITE_ID = 1
