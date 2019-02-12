@@ -16,7 +16,6 @@ from .utilites import UrlMaker
 from .registry_import import Importer, data_url
 # Create your views here.
 
-
 def index(request):
     """this is mainpage view with forms handler and adapter to messages"""
     title = "Главная - НАКС Смоленск"
@@ -69,7 +68,7 @@ def index(request):
     content = {
         'title': title,
         'pictured_posts': pictured_posts,
-        'not_pictured_posts': not_pictured_posts,
+        'posts': not_pictured_posts,
         'articles': main_page_articles,
         'docs': main_page_documents,
         'send_message_form': SendMessageForm(),

@@ -25,17 +25,17 @@ get_picture_preview.allow_tags = True
 get_picture_preview.short_description = "Предварительный просмотр:"
 
 
-def get_url(obj):
-    # Надо обязательно изменить на боевом сервере адрес ссылки
-    if obj.pk:
-        return format_html(
-            '<a href="{}" target="_blank">http://127.0.0.0{}</a>'.format(obj.get_absolute_url(),
-                                                                         obj.get_absolute_url())
-        )
+# def get_url(obj):
+#     # Надо обязательно изменить на боевом сервере адрес ссылки
+#     if obj.pk:
+#         return format_html(
+#             '<a href="{}" target="_blank">http://127.0.0.0{}</a>'.format(obj.get_absolute_url(),
+#                                                                          obj.get_absolute_url())
+#         )
 
 
-get_url.allow_tags = True
-get_url.short_description = "Ссылка на страницу"
+# get_url.allow_tags = True
+# get_url.short_description = "Ссылка на страницу"
 
 
 class PostPhotoInline(admin.StackedInline):
@@ -93,19 +93,22 @@ show_url.allow_tags = True
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     # save_on_top = True
-    view_on_site = True
-
-    fields = ['id', 'title', 'tags', 'category', 'author', 'short_description', 'text', get_url,
+    # view_on_site = True
+# 
+    fields = ['id', 'title', 'tags', 'category', 'author', 'short_description', 'text', 
               'created_date', 'published_date', 'publish_on_main_page', 'secondery_main', 'publish_on_news_page']
-    readonly_fields = ['id', get_url]
+    # fields = ['id', 'title', 'tags', 'category', 'author', 'short_description', 'text', get_url,
+    #           'created_date', 'published_date', 'publish_on_main_page', 'secondery_main', 'publish_on_news_page']
+    # readonly_fields = ['id', get_url]
+    readonly_fields = ['id' ]
     list_display = ['title', 'category',
                     'created_date', 'publish_on_main_page', 'publish_on_news_page']
     inlines = [PostPhotoInline, DocumentInline]
 
-    def view_on_site(self, obj):
-        url = reverse('detailview', kwargs={
-                      'content': 'post', 'pk': obj.pk})
-        return 'http://127.0.0.1:8000'+url
+    # def view_on_site(self, obj):
+    #     url = reverse('mainapp:detailview', kwargs={
+    #                   'content': 'post', 'pk': obj.pk})
+    #     return 'http://127.0.0.1:8000'+url
 
 
 @admin.register(PostPhoto)

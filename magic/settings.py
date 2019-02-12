@@ -55,10 +55,10 @@ INSTALLED_APPS = [
     'djangocms_snippet',
     'djangocms_style',
     'djangocms_column',
-    'mainapp',
     'ckeditor',
     'ckeditor_uploader',
     'sass_processor',
+    'mainapp',
 ]
 
 SITE_ID = 1
