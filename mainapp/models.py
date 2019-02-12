@@ -11,6 +11,8 @@ from django.core.validators import FileExtensionValidator
 from ckeditor.fields import RichTextField
 from django.utils.text import slugify
 from django.urls import reverse
+#cms
+from cms.models import CMSPlugin
 #using this as a store for weld orgs:
 # from picklefield.fields import PickledObjectField
 # from django_resized import ResizedImageField
@@ -92,6 +94,12 @@ class Post(ContentMixin):
 
     def __str__(self):
         return self.title
+
+class PostPluginModel(CMSPlugin):
+    post = models.ForeignKey(Post)
+
+    def __unicode__(self):
+        return self.post.title
 
 
 class Article(ContentMixin):

@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'sass_processor',
+    'mainapp_cms_integration',
     'mainapp',
 ]
 
